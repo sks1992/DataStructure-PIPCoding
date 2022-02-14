@@ -1,5 +1,7 @@
 package interview_questions
 
+import java.util.*
+
 /*
 1. Two Sum
 
@@ -38,9 +40,35 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
 * */
 
 fun main() {
-    twoSum()
+    val scn = Scanner(System.`in`)
+    println("Enter number of Element in nums array:")
+    val n = scn.nextInt()
+    val nums = IntArray(n)
+    println("Enter Elements in array nums : ")
+    for (i in 0 until n) {
+        nums[i] = scn.nextInt()
+    }
+    println("Enter target value")
+    val target = scn.nextInt()
+    println(twoSum(nums, target).contentToString())
 }
 
-fun twoSum() {
+fun twoSum(nums: IntArray, target: Int): IntArray {
+    //store result of index only on pair so length =2
+    val result = IntArray(2)
+    val hashmap = HashMap<Int, Int>()
 
+    //searching hashMap
+    for (i in nums.indices) {
+        val complement = target - nums[i]
+        if (hashmap.containsKey(complement)) {
+            result[0] = hashmap[complement]!!
+            result[1] = i
+        } else {
+
+            //fill hashmap
+            hashmap[nums[i]] = i
+        }
+    }
+    return result
 }

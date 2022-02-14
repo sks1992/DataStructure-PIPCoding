@@ -1,5 +1,6 @@
 package interview_questions;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -18,31 +19,31 @@ public class P1_TwoSum {
         int target = scn.nextInt();
 
 
+        System.out.println(Arrays.toString(twoSum(nums, target)));
     }
 
     private static int[] twoSum(int[] nums, int target) {
-        HashMap<Integer,Integer> map  =new HashMap<>();
+        //store result of index only on pair so length =2
+        int[] result = new int[2];
 
-        //fill hashmap
-        for(int i =0;i<nums.length ;i++){
-            map.put(nums[i],i );
-        }
+        HashMap<Integer, Integer> hashmap = new HashMap<>();
+
         //searching hashMap
-        for (int  i=0;i< nums.length;i++){
-            int  num =nums[i];
-            int rem =target-num;
-            if (map.containsKey(rem)){
-                int index =map.get(rem);
-                if (index ==i){
-                    return new int[]{i ,index};
-                }
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (hashmap.containsKey(complement)) {
+                result[0] = hashmap.get(complement);
+                result[1] = i;
+            } else {
+                hashmap.put(nums[i], i);
             }
         }
-        return new int[]{};
+        return result;
     }
 }
 
-
+//Time Complexity =O(n)
+//Space Complexity =O(n)
 
 /*
  public static void main(String[] args) {
