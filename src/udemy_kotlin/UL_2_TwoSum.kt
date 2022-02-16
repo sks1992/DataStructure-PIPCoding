@@ -44,6 +44,8 @@ fun main() {
     //println(twoSumBrutForce(arr, target).contentToString())
 }
 
+//Time Complexity =O(n)
+//Space Complexity =O(n)
 fun twoSum(nums: IntArray, target: Int): IntArray {
     //to store pain of result indices
     val result = IntArray(2)
