@@ -21,11 +21,4 @@ fun main() {
         print(intArray[i].toString() + "\t\t")
     }
 }
-
-fun swap(array: IntArray, i: Int, j: Int) {
-    if (i == j) return
-    val temp = array[i]
-    array[i] = array[j]
-    array[j] = temp
-}
 //time complexity =O(n^2)
